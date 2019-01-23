@@ -30,7 +30,7 @@ return (
     <PrivateRoute exact path="/Home" component={Home} isConnected={isConnected}/>
     <PrivateRoute exact path="/MyProfile" component={Profile}isConnected={isConnected}/>
     <PrivateRoute exact path="/Oyez" component={oyez}isConnected={isConnected}/>
-    <PrivateRoute exact path="/gallery/:id" render={({match})=> <EmployeeDetail match={match} /> }/>
+    <Route exact path="/gallery/:id" render={({match})=> <EmployeeDetail match={match} /> }/>
     
     </div>
 </Router>
