@@ -21,9 +21,9 @@ mutation updateNetworkStatus($isConnected: bool){
 }
 `
 
-const date = {
-date : new Date(),
-};
+// const date = {
+// date : new Date(),
+// };
 
 class ButtonAppBar extends Component {
   
@@ -35,7 +35,7 @@ class ButtonAppBar extends Component {
   }
 
   handleClose = () => {
-    console.log('tyest');
+    console.log('test');
     const { open } = this.state;
     this.setState({
       open: !open
@@ -134,7 +134,7 @@ cursor : pointer;
 }
 h4{
   width: 50px;
-padding: 10px;
+padding: 20px;
 margin: 0 auto;
 display: inline-block;
 vertical-align: middle;

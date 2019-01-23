@@ -32,10 +32,10 @@ class Login extends React.Component {
   handleSubmit = fn => async (e) => {
 
     e.preventDefault(); // enlever le comportement par defaut du navigateur
-    console.log("this.state", this.state);
+    // console.log("this.state", this.state);
     const config = {variables:{"input": {"email": this.state.login,"password": this.state.password}}}
     const data = await fn(config);
-    console.log("****",data);
+    // console.log("****",data);
     const jwToken = data.data.login.token ;
     if(jwToken){
       // window.alert("User Logged");

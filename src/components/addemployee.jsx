@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Mutation, graphql } from 'react-apollo';
+import { Mutation } from 'react-apollo';
 import {ADD_EMPLOYEE, UPDATE_EMPLOYEE } from './../graphql/employeesMutations';
 import employees from "../graphql/employees";
 import TextField from '@material-ui/core/TextField';

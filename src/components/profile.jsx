@@ -1,18 +1,30 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { graphql, Query } from "react-apollo";
+import { graphql,Mutation, Query } from "react-apollo";
 import {Link} from 'react-router-dom';
 import AddEmployee from './addemployee';
 import employees from "../graphql/employees";
+import DELETE_EMPLOYEE from '../graphql/deleteEmploye';
 import CircularDeterminate from "./loading";
 import background2 from "../img/background2.jpg"
 import Navprivate from "./privateNavbar/Navprivate";
 import Create from '@material-ui/icons/Create';
 import Modal from 'react-awesome-modal';
 import logo from "../logo.svg";
+import DeleteIcon from '@material-ui/icons/Delete';
 
 
-// import SearchBar from 'materia
+const handleDelete = removeEmploye => {
+const confirmDelete = window.confirm("vous êtes sur le point de supprimer un employé ! ");
+    if (confirmDelete) {
+      removeEmploye().then(({data}) => {
+        console.log(data);
+      }
+      );
+    }
+  };
+
+
 class Profile extends Component {
   constructor(props){
     super(props);
@@ -30,23 +42,13 @@ class Profile extends Component {
     this.setState({ open : true})
   
   }
-  removeEmployee = async (user) =>{
-    await this.props.removeEmployee({
-      variables:{
-id: user.id,
-userName: user.userName,
-lastName: user.lastName,
-prijet: user.projet,
-position: user.position
-      },
-    })
-  }
-
+  
   render () {
-  console.log("props",this.props);
-  const allemployee = this.props.data.employees;
-  const {open} = this.state;
-
+  // console.log("props",this.props);
+  // const allemployee = this.props.data.employees;
+  // const {open} = this.state;
+    
+ 
     return (
       <Query query= {employees}>
       {({loading, error, data})=>{
@@ -56,13 +58,26 @@ position: user.position
       
 const employeeView = data.employees.map(user => (
   <tr>
-    <td >  <Create className="update" onClick={()=> this.updateEmployee(user)}> Update</Create>
- </td>
+  
     <td><Link style={{ textDecoration: 'none', color: 'black' }} to={`/gallery/${user.id}`}> <div className="info">{user.firstName}</div></Link></td>
     <td> <div className="info">{user.lastName}</div></td>
     <td><div className="info">{user.projet}</div></td>
-    <td><button onClick="ok"/></td>
+    <Mutation mutation={DELETE_EMPLOYEE} variables={{id : user.id}} refetchQueries={[{ query: employees}]}>
+ {removeEmploye => 
+   (
+     <td> <div className="button" aria-label="Add" onClick={()=> handleDelete(removeEmploye) }>
+         <DeleteIcon/>
+          </div>
+     </td>
+     
+   )
+ }
+ </Mutation>
+ <td >  <Create className="update" onClick={()=> this.updateEmployee(user)}> Update</Create>
+ </td>
+
  </tr>
+
 ))
 
 return (
@@ -73,12 +88,9 @@ return (
       <table>
        <thead>
          <tr>
-           
-           <th> Update </th>
            <th>First Name</th>
            <th>Last Name</th>
            <th>Affectation</th>
-           <th>Delete</th>
          </tr>
        </thead>
        <tbody>

@@ -62,15 +62,15 @@ export default withRouter(Navbar);
 const Wrapper = styled.div`
 
 .logo {
-width: 60px;
-padding: 10px;
+width: 80px;
+padding: 20px;
 margin: 0 auto;
 display: inline-block;
 vertical-align: middle;
 }
 h4{
   width: 50px;
-padding: 10px;
+padding: 20px;
 margin: 0 auto;
 display: inline-block;
 vertical-align: middle;
@@ -116,6 +116,7 @@ header {
 }
 nav {
   width: 100%;
+  display: flow-root;
   color: black;
   background: #c3bfbf33;
   font-weight: bold;
