@@ -12,6 +12,8 @@ const GET_Employee_BY_ID = gql`
       lastName
       projet
       position
+      salary
+      date
 
     }
 

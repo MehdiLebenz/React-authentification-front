@@ -6,6 +6,7 @@ import TextField from '@material-ui/core/TextField';
 import Fab from '@material-ui/core/Fab';
 import styled from 'styled-components';
 import AddIcon from '@material-ui/icons/Add';
+
 class AddEmployee extends Component {
   constructor(props){
     super(props);
@@ -36,7 +37,7 @@ class AddEmployee extends Component {
         window.alert('ok');
         this.props.close();
       } catch (error) {
-        window.alert('check the informations inputed');
+        window.alert('error');
       }
     }
   render() { 

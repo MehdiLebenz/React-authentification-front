@@ -40,15 +40,8 @@ class Profile extends Component {
   updateEmployee =  async (user)=>{ console.log('emp', user);
     await this.setState({ selectedEmployee: user}); 
     this.setState({ open : true})
-  
   }
-  
   render () {
-  // console.log("props",this.props);
-  // const allemployee = this.props.data.employees;
-  // const {open} = this.state;
-    
- 
     return (
       <Query query= {employees}>
       {({loading, error, data})=>{
@@ -61,11 +54,12 @@ const employeeView = data.employees.map(user => (
   
     <td><Link style={{ textDecoration: 'none', color: 'black' }} to={`/gallery/${user.id}`}> <div className="info">{user.firstName}</div></Link></td>
     <td> <div className="info">{user.lastName}</div></td>
+    
     <td><div className="info">{user.projet}</div></td>
     <Mutation mutation={DELETE_EMPLOYEE} variables={{id : user.id}} refetchQueries={[{ query: employees}]}>
  {removeEmploye => 
    (
-     <td> <div className="button" aria-label="Add" onClick={()=> handleDelete(removeEmploye) }>
+     <td> <div className="button" aria-label="Add" onClick={()=>handleDelete(removeEmploye)}  >
          <DeleteIcon/>
           </div>
      </td>

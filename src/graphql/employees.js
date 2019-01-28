@@ -8,6 +8,8 @@ query allemployee{
   lastName
   projet
   position
+  salary
+  date
 }
 }
 `;

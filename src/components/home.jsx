@@ -1,7 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import styled from "styled-components";
-import background from "../img/background.jpg";
+import loginback from "../img/loginback.jpg";
 import Navbar from "./navbar";
 
 function Home() {
@@ -49,9 +49,9 @@ body {
 }
 height: 100%;
   width:100%;
-  background-image :url(${background});
+  background-image :url(${loginback});
   position: absolute;
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
 header {

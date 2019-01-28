@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { Mutation, compose, graphql } from "react-apollo";
 import gql from "graphql-tag";
 import nom from '../img/nom.jpg' ;
-
+import loginback from '../img/loginback.jpg'
 const loginMutation = gql`
   mutation Login($input: UserInput) {
     login(input: $input) {
@@ -79,7 +79,7 @@ class Login extends React.Component {
             <span> Connection </span>
             </button>
             <div className="forgot">
-              <a  href="/"> Forgot your password ? </a>
+              <a  href="/register"> Register </a>
             </div>
           </form>
           
@@ -103,22 +103,29 @@ export default compose (withRouter, graphql(updateNetworkStatus, {
   }),
 }),)(Login);
 const Wrapper = styled.div`
+height: 100%;
+  width:100%;
+  background-image :url(${loginback});
+  position: absolute;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
 
 form {
-width: 435px;
-height: 500px;
-margin: 0 auto;
-position: absolute;
-top: 50%;
-left: 50%;
-background : white;
-transform: translate(-50%,-50%);
-font-size: 22px;
-font-family: 'Poppins', sans-serif;
-padding: 10px;
-text-align: center;
-text-transform: capitalize;
-box-shadow: 0px 0px 6px 2px #0006;
+  width: 435px;
+    height: 500px;
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 31%;
+    background: #e0e0e0ad;
+    transform: translate(-50%,-50%);
+    font-size: 22px;
+    font-family: 'Poppins',sans-serif;
+    padding: 10px;
+    text-align: center;
+    text-transform: capitalize;
+    box-shadow: 0px 0px 6px 2px #0006;
 }
 .nom {
 width:130px;
